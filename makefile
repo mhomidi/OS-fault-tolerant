@@ -1,7 +1,7 @@
 all: Search
 
 Search : main.o functions.o
-	g++ -c main.o functions.o -o Search
+	g++ main.o functions.o -o Search
 
 functions.o : functions.cpp functions.h
 	g++ -c functions.cpp

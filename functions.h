@@ -12,4 +12,4 @@
 using namespace std;
 
 vector<string> files();
-bool fexists(const char *filename) ;
+bool fexists(string filename);
