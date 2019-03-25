@@ -49,8 +49,10 @@ void workerDo(string DBFile, int sensor, int fd[]) {
     ifstream inFile;
     inFile.open(DBFile);
     while (inFile >> key >> value) {
-        if (sensor == key)
+        if (sensor == key) {
             passDatumToFinalProcess(value, fd);
+            break;
+        }
     }
     inFile.close();
 }
