@@ -55,4 +55,6 @@ void workerDo(string DBFile) {
     inFile.close();
 }
 
-void
+void workerDoTest() {
+    workerDo("databases/0/0.txt");
+}

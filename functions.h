@@ -15,3 +15,4 @@ vector<string> files();
 bool fexists(string filename);
 void filesFuncTest();
 void workerDo(string DBFile);
+void workerDoTest();

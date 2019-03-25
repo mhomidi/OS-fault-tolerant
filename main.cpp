@@ -7,6 +7,7 @@
 int main() {
     // filesFuncTest();
 
+    workerDoTest();
 
     return 0;
 }
