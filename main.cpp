@@ -5,9 +5,8 @@
 #include "functions.h"
 
 int main() {
-    vector<string> f = files();
-    for (int i = 0; i < f.size(); ++i) {
-        cout << f[i] << endl;
-    }
+    // filesFuncTest();
+
+
     return 0;
 }

@@ -36,3 +36,10 @@ vector<string> files() {
     }
     return f;
 }
+
+void filesFuncTest() {
+    vector<string> f = files();
+    for (int i = 0; i < f.size(); ++i) {
+        cout << f[i] << endl;
+    }
+}

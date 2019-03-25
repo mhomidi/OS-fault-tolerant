@@ -13,3 +13,4 @@ using namespace std;
 
 vector<string> files();
 bool fexists(string filename);
+void filesFuncTest();
