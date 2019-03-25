@@ -56,12 +56,13 @@ void workerDo(string DBFile, int sensor, int fd[]) {
 }
 
 void workerDoTest() {
-    workerDo("databases/0/0.txt", 0);
+//    workerDo("databases/0/0.txt", 0);
 }
 
 void passDatumToFinalProcess(int value, int fd[]) {
     close(fd[0]);
     string val = to_string(value);
-    write(fd[1], val, strlen(val) + 1);
+    const char* val2 = val.c_str();
+    write(fd[1], val2, strlen(val2) + 1);
     close(fd[1]);
 }
