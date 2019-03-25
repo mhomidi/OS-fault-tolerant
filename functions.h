@@ -18,3 +18,4 @@ void filesFuncTest();
 void workerDo(string DBFile, int sensor, int fd[]);
 void workerDoTest();
 void passDatumToFinalProcess(int value, int fd[]);
+int getDatumInFinalProcess(int fd[]);

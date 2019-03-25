@@ -66,3 +66,11 @@ void passDatumToFinalProcess(int value, int fd[]) {
     write(fd[1], val2, strlen(val2) + 1);
     close(fd[1]);
 }
+
+int getDatumInFinalProcess(int fd[]) {
+    close(fd[1]);
+    char buff[100];
+    read(fd[0], buff, 100);
+    int res = atoi(buff);
+    return res;
+}
