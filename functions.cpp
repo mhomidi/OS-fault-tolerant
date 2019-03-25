@@ -44,13 +44,13 @@ void filesFuncTest() {
     }
 }
 
-void workerDo(string DBFile) {
-    vector<vector<int> > data;
-    int a, b;
+void workerDo(string DBFile, int sensor) {
+    int key, value;
     ifstream inFile;
     inFile.open(DBFile);
-    while (inFile >> a >> b) {
-        cout << a << endl;
+    while (inFile >> key >> value) {
+        if (sensor == key)
+            passDatumToFinalProcess(value);
     }
     inFile.close();
 }
