@@ -5,11 +5,12 @@
 #include "functions.h"
 
 bool fexists(const char *filename) {
-    std::ifstream ifile(filename);
+    ifstream ifile(filename);
     return (bool)ifile;
 }
 
-int numberOfFiles() {
+vector<string> files() {
+    int number = 0;
     int folderName = 0;
     int fileName = 0;
     while (true){

@@ -1,13 +1,13 @@
 all: Search
 
 Search : main.o functions.o
-	g++ main.o functions.o -o Server
+	g++ -c main.o functions.o -o Search
 
 functions.o : functions.cpp functions.h
-	g++ functions.cpp
+	g++ -c functions.cpp
 
 main.o : main.cpp functions.h
-	g++ main.cpp
+	g++ -c main.cpp
 
 clean:
 	rm *.o Search

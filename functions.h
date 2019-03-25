@@ -11,5 +11,5 @@
 
 using namespace std;
 
-int numberOfFiles();
+vector<string> files();
 bool fexists(const char *filename) ;
