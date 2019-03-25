@@ -60,5 +60,8 @@ void workerDoTest() {
 }
 
 void passDatumToFinalProcess(int value, int fd[]) {
-
+    close(fd[0]);
+    string val = to_string(value);
+    write(fd[1], val, strlen(val) + 1);
+    close(fd[1]);
 }
