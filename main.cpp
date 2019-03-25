@@ -25,7 +25,7 @@ int main() {
             perror("fork");
             abort();
         } else if (pids[i] == 0) {
-            cout << "I am child" << endl;
+            workerDo(fileDirs[i]);
             exit(0);
         }
     }

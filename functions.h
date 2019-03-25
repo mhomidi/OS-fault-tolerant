@@ -16,3 +16,4 @@ bool fexists(string filename);
 void filesFuncTest();
 void workerDo(string DBFile);
 void workerDoTest();
+void passDatumToFinalProcess(int value);

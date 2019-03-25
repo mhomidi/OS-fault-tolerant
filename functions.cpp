@@ -58,3 +58,7 @@ void workerDo(string DBFile, int sensor) {
 void workerDoTest() {
     workerDo("databases/0/0.txt");
 }
+
+void passDatumToFinalProcess(int value) {
+
+}
