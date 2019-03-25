@@ -10,6 +10,7 @@
 #include <fstream>
 
 using namespace std;
+#define MAX_DATABASE 10000
 
 vector<string> files();
 bool fexists(string filename);

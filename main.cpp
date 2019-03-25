@@ -15,7 +15,12 @@ int main() {
     vector<string> fileDirs = files();
     int numberOfChildren = fileDirs.size();
     int in;
+    int pipes[MAX_DATABASE][2];
 
+    for (int i = 0; i < numberOfChildren; ++i) {
+        if (pipe(pipes[i]) == -1)
+            return 1;
+    }
 
     cin >> in;
 
@@ -28,7 +33,7 @@ int main() {
             perror("fork");
             abort();
         } else if (pids[i] == 0) {
-            workerDo(fileDirs[i], in);
+            workerDo(fileDirs[i], in, pipes[i]);
             exit(0);
         }
     }
