@@ -44,13 +44,15 @@ void filesFuncTest() {
     }
 }
 
-void childProcessDo(string DBFile) {
+void workerDo(string DBFile) {
     vector<vector<int> > data;
     int a, b;
     ifstream inFile;
     inFile.open(DBFile);
     while (inFile >> a >> b) {
-        // do st
+        cout << a << endl;
     }
     inFile.close();
 }
+
+void

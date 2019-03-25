@@ -14,4 +14,4 @@ using namespace std;
 vector<string> files();
 bool fexists(string filename);
 void filesFuncTest();
-void childProcessDo(string DBFile);
+void workerDo(string DBFile);
