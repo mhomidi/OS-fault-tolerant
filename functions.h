@@ -14,6 +14,6 @@ using namespace std;
 vector<string> files();
 bool fexists(string filename);
 void filesFuncTest();
-void workerDo(string DBFile);
+void workerDo(string DBFile, int sensor, int fd[]);
 void workerDoTest();
-void passDatumToFinalProcess(int value);
+void passDatumToFinalProcess(int value, int fd[]);

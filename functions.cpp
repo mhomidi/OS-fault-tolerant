@@ -44,21 +44,21 @@ void filesFuncTest() {
     }
 }
 
-void workerDo(string DBFile, int sensor) {
+void workerDo(string DBFile, int sensor, int fd[]) {
     int key, value;
     ifstream inFile;
     inFile.open(DBFile);
     while (inFile >> key >> value) {
         if (sensor == key)
-            passDatumToFinalProcess(value);
+            passDatumToFinalProcess(value, fd);
     }
     inFile.close();
 }
 
 void workerDoTest() {
-    workerDo("databases/0/0.txt");
+    workerDo("databases/0/0.txt", 0);
 }
 
-void passDatumToFinalProcess(int value) {
+void passDatumToFinalProcess(int value, int fd[]) {
 
 }

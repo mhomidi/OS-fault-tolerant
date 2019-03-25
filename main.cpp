@@ -14,7 +14,10 @@ int main() {
     vector<pid_t> pids;
     vector<string> fileDirs = files();
     int numberOfChildren = fileDirs.size();
+    int in;
 
+
+    cin >> in;
 
     for (int k = 0; k < numberOfChildren; ++k) {
         pids.push_back(0);
@@ -25,7 +28,7 @@ int main() {
             perror("fork");
             abort();
         } else if (pids[i] == 0) {
-            workerDo(fileDirs[i]);
+            workerDo(fileDirs[i], in);
             exit(0);
         }
     }
