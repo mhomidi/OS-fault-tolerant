@@ -78,5 +78,13 @@ int getDatumInFinalProcess(int fd[]) {
 }
 
 int searchMax(map<int, int> data, int min, int max) {
-
+    int m = -100000;
+    int index = -1;
+    for (int i = min; i < max + 1; ++i) {
+        if (data[i] > m) {
+            m = data[i];
+            index = i;
+        }
+    }
+    return index;
 }
