@@ -62,6 +62,7 @@ int main() {
         }
         int maximum = searchMax(data, min, max);
         cout << maximum << endl;
+        exit(0);
     } else {
         wait(NULL);
     }
