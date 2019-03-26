@@ -38,5 +38,11 @@ int main() {
         }
     }
 
+    int n = numberOfChildren;
+    while (n > 0) {
+        pid = wait(NULL);
+        --n;
+    }
+
     return 0;
 }
