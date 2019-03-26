@@ -51,14 +51,16 @@ int main() {
     }
     else if (pid == 0) {
         map<int, int> data;
-        int max = -100000;
+        int max = -100000, min = 100000;
         for (int i = 0; i < numberOfChildren; ++i) {
             int res = getDatumInFinalProcess(pipes[i]);
             if (res > max)
                 max = res;
+            if (res < min)
+                min = res;
             data[res]++;
         }
-        int maximum = searchMax(data);
+        int maximum = searchMax(data, min, max);
         cout << maximum << endl;
     } else {
         wait(NULL);
