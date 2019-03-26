@@ -77,6 +77,6 @@ int getDatumInFinalProcess(int fd[]) {
     return res;
 }
 
-int searchMax(map<int, int> data) {
+int searchMax(map<int, int> data, int min, int max) {
 
 }
