@@ -40,8 +40,27 @@ int main() {
 
     int n = numberOfChildren;
     while (n > 0) {
-        pid = wait(NULL);
+        wait(NULL);
         --n;
+    }
+
+    pid_t pid = fork();
+    if (pid < 0) {
+        perror("fork");
+        abort();
+    }
+    else if (pid == 0) {
+        for (int i = 0; i < numberOfChildren; ++i) {
+            int res = getDatumInFinalProcess(pipes[i]);
+            int index;
+            if ((index = numberIndex(results, res)) == -1) {
+
+            } else {
+
+            }
+        }
+    } else {
+        wait(NULL);
     }
 
     return 0;
