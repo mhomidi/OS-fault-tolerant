@@ -8,6 +8,8 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <iterator>
+#include <map>
 
 using namespace std;
 #define MAX_DATABASE 10000
