@@ -50,14 +50,13 @@ int main() {
         abort();
     }
     else if (pid == 0) {
+        map<int, int> data;
+        int max = -100000;
         for (int i = 0; i < numberOfChildren; ++i) {
             int res = getDatumInFinalProcess(pipes[i]);
-            int index;
-            if ((index = numberIndex(results, res)) == -1) {
-
-            } else {
-
-            }
+            if (res > max)
+                max = res;
+            data[res]++;
         }
     } else {
         wait(NULL);
