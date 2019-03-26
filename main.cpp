@@ -17,12 +17,12 @@ int main() {
     int in;
     int pipes[MAX_DATABASE][2];
 
+    cin >> in;
     for (int i = 0; i < numberOfChildren; ++i) {
         if (pipe(pipes[i]) == -1)
             return 1;
     }
 
-    cin >> in;
 
     for (int k = 0; k < numberOfChildren; ++k) {
         pids.push_back(0);
