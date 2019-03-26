@@ -76,3 +76,7 @@ int getDatumInFinalProcess(int fd[]) {
     int res = atoi(buff);
     return res;
 }
+
+int searchMax(map<int, int> data) {
+
+}

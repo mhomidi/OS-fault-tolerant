@@ -59,7 +59,7 @@ int main() {
             data[res]++;
         }
         int maximum = searchMax(data);
-        cout << data << endl;
+        cout << maximum << endl;
     } else {
         wait(NULL);
     }
