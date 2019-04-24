@@ -5,25 +5,13 @@
 #include "functions.h"
 
 int main() {
-    // filesFuncTest();
-
-//    workerDoTest();
-
 
 
     vector<pid_t> pids;
-    vector<string> fileDirs = files();
+    vector<string> fileDirs = ls("./databases/");
     int numberOfChildren = fileDirs.size();
     int in;
-    int pipes[MAX_DATABASE][2];
-
     cin >> in;
-    for (int i = 0; i < numberOfChildren; ++i) {
-        if (pipe(pipes[i]) == -1)
-            return 1;
-    }
-
-
     for (int k = 0; k < numberOfChildren; ++k) {
         pids.push_back(0);
     }
@@ -33,14 +21,25 @@ int main() {
             perror("fork");
             abort();
         } else if (pids[i] == 0) {
-            workerDo(fileDirs[i], in, pipes[i]);
+            int pid = getpid();
+            string s = to_string(pid);
+            s = "./hadi/" + s;
+            const char *name = s.c_str();
+            mkfifo(name, 0666);
+            int fd = 0;
+            if ((fd = open(name, O_NONBLOCK, O_CREAT)) < 0);
+            else
+                workerDo(fileDirs[i], in, fd, i);
+            close(fd);
+            cout << fd << endl;
             exit(0);
         }
+        wait(NULL);
     }
 
     int n = numberOfChildren;
     while (n > 0) {
-        wait(NULL);
+//        wait(NULL);
         --n;
     }
 
@@ -53,7 +52,13 @@ int main() {
         map<int, int> data;
         int max = -100000, min = 100000;
         for (int i = 0; i < numberOfChildren; ++i) {
-            int res = getDatumInFinalProcess(pipes[i]);
+            string s = to_string(pid);
+            s = "./hadi/" + s;
+            const char *name = s.c_str();
+            mkfifo(name, 0666);
+            int fd = open(name, O_NONBLOCK);
+            int res = getDatumInFinalProcess(fd);
+            close(fd);
             if (res > max)
                 max = res;
             if (res < min)

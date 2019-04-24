@@ -10,6 +10,9 @@
 #include <fstream>
 #include <iterator>
 #include <map>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <dirent.h>
 
 using namespace std;
 #define MAX_DATABASE 10000
@@ -17,8 +20,9 @@ using namespace std;
 vector<string> files();
 bool fexists(string filename);
 void filesFuncTest();
-void workerDo(string DBFile, int sensor, int fd[]);
+void workerDo(string DBFile, int sensor, int fd, int i);
 void workerDoTest();
-void passDatumToFinalProcess(int value, int fd[]);
-int getDatumInFinalProcess(int fd[]);
+void passDatumToFinalProcess(int value, int fd, int i);
+int getDatumInFinalProcess(int fd);
 int searchMax(map<int, int> data, int min, int max);
+vector<string> ls(string path);

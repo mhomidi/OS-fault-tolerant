@@ -9,6 +9,25 @@ bool fexists(string filename) {
     return (bool)ifile;
 }
 
+vector<string> ls(string path) {
+    DIR *mydir;
+    vector <string> files;
+    struct dirent *myfile;
+    mydir = opendir(&path[0]);
+    while ((myfile = readdir(mydir)) != NULL) {
+        if (myfile->d_name[0] == '.')
+            continue;
+        else if (myfile->d_type == DT_DIR) {
+            vector <string> recursive_files = ls(path + myfile->d_name + "/");
+            files.insert(files.end(), recursive_files.begin(), recursive_files.end());
+        } else
+            files.push_back(path + myfile->d_name);
+    }
+    closedir(mydir);
+    sort(files.begin(), files.end());
+    return files;
+}
+
 vector<string> files() {
     vector<string> f;
     int number = 0;
@@ -44,13 +63,14 @@ void filesFuncTest() {
     }
 }
 
-void workerDo(string DBFile, int sensor, int fd[]) {
+void workerDo(string DBFile, int sensor, int fd, int i) {
     int key, value;
     ifstream inFile;
     inFile.open(DBFile);
     while (inFile >> key >> value) {
         if (sensor == key) {
-            passDatumToFinalProcess(value, fd);
+//            cout << value << endl;
+            passDatumToFinalProcess(value, fd, i);
             break;
         }
     }
@@ -61,18 +81,23 @@ void workerDoTest() {
 //    workerDo("databases/0/0.txt", 0);
 }
 
-void passDatumToFinalProcess(int value, int fd[]) {
-    close(fd[0]);
+void passDatumToFinalProcess(int value, int fd, int i) {
     string val = to_string(value);
-    const char* val2 = val.c_str();
-    write(fd[1], val2, strlen(val2) + 1);
-    close(fd[1]);
+    char buff[20000];
+    cout << read(fd, buff, 20000) << endl;
+    string s(buff);
+    if (i != 0)
+        s += val;
+    else
+        s = val;
+    const char* val2 = s.c_str();
+    cout << write(fd, val2, strlen(val2) + 1) << endl;
 }
 
-int getDatumInFinalProcess(int fd[]) {
-    close(fd[1]);
+int getDatumInFinalProcess(int fd) {
+//    close(fd[1]);
     char buff[100];
-    read(fd[0], buff, 100);
+    read(fd, buff, 100);
     int res = atoi(buff);
     return res;
 }
