@@ -69,6 +69,7 @@ void workerDo(string DBFile, int sensor, int fd, int i) {
     inFile.open(DBFile);
     while (inFile >> key >> value) {
         if (sensor == key) {
+//            cout << "Salkama" << endl;
 //            cout << value << endl;
             passDatumToFinalProcess(value, fd, i);
             break;
@@ -83,15 +84,9 @@ void workerDoTest() {
 
 void passDatumToFinalProcess(int value, int fd, int i) {
     string val = to_string(value);
-    char buff[20000];
-    cout << read(fd, buff, 20000) << endl;
-    string s(buff);
-    if (i != 0)
-        s += val;
-    else
-        s = val;
-    const char* val2 = s.c_str();
-    cout << write(fd, val2, strlen(val2) + 1) << endl;
+    const char* val2 = val.c_str();
+//    cout << write(fd, val2, strlen(val2) + 1) << endl;
+    write(fd, val2, strlen(val2) + 1);
 }
 
 int getDatumInFinalProcess(int fd) {
